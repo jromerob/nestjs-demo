@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { CustomResponse } from 'src/dtos/custom-response';
 
 @Injectable()
 export class ClientesService {
-    save(cliente: any): any {
+    get(id: number): any {
+        return DUMMY[id];
+    }
+    save(cliente: any): CustomResponse {
         return {
             statusCode: 201,
             message: `Cliente ${cliente.login} guardado correctamente`,
