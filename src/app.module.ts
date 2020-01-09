@@ -1,25 +1,15 @@
-import { Module, HttpModule } from '@nestjs/common';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientesController } from './clientes/clientes.controller';
-import { ClientesService } from './clientes/clientes.service';
-import { ClientesAsyncController } from './clientes-async/clientes-async.controller';
-import { ClientesAsyncService } from './clientes-async/clientes-async.service';
+import { TutorialsModule } from './tutorials/tutorials.module';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ClientesModule } from './clientes/clientes.module';
 
 @Module({
-  imports: [HttpModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      port: 5432,
-      username: 'toponimiajcyl',
-      password: 'JBBDpAmH',
-      database: 'toponimiajcyl',
-      host: 'srvdeslin02.grupotecopy.es',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
-    })],
-  controllers: [AppController, ClientesController, ClientesAsyncController],
-  providers: [AppService, ClientesService, ClientesAsyncService],
+  imports: [TypeOrmModule.forRoot(), TutorialsModule, ClientesModule],
+  controllers: [AppController],
+  providers: [AppService],
+
 })
 export class AppModule { }

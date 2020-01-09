@@ -1,24 +1,25 @@
-import { Controller, Get, Post, Body, Req, HttpCode, Header, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Header, Param } from '@nestjs/common';
 import { ClientesService } from './clientes.service';
-import { Cliente } from 'src/dtos/cliente.dto';
-import { CustomResponse } from 'src/dtos/custom-response';
+
+import { Cliente } from './cliente.entity';
+import { CustomResponse } from '../dtos/custom-response';
 
 @Controller('clientes')
 export class ClientesController {
 
-    constructor(private clientesService: ClientesService) {
+    constructor(private readonly clientesService: ClientesService) {
 
     }
 
     @Get()
-    public getAll(): Cliente[] {
+    getAll(): Promise<Cliente[]> {
         return this.clientesService.getAll();
 
     }
 
     @Get(':id')
-    findOne(@Param() params): Cliente {
-        return this.clientesService.get(params.id - 1);
+    findOne(@Param() params): Promise<Cliente> {
+        return this.clientesService.get(params.id);
     }
 
     @Post()
