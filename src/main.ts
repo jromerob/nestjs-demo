@@ -7,6 +7,8 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .setTitle('NestJS Demo')
+    .addServer('http://localhost:3000/', 'Servidor local')
+    .addServer('http://pre.grupotecopy.es/', 'Servidor preproducción')
     .setDescription('Prueba de API con Nestjs')
     .setVersion('1.0')
     .build();

@@ -1,10 +1,10 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
 
-// tslint:disable:variable-name
 @Entity('cliente')
 export class Cliente {
-
-    @PrimaryColumn()
+    // tslint:disable: variable-name
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column({ length: 160 })

@@ -1,64 +1,8 @@
 
-SET SQL_MODE
-  = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT
-  = 0;
+SET SQL_MODE  = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT  = 0;
 START TRANSACTION;
-SET time_zone
-  = "+00:00";
-
-
-
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE `cliente`
-  (`id`    int(11) ,
-    `login`    varchar(160) NOT NULL,
-    `node_id`
-    varchar(160) NOT NULL,
-    `avatar_url`
-    varchar(160) NOT NULL,
-    `gravatar_id`
-    varchar(160) NOT NULL,
-    `url`
-    varchar(160) NOT NULL,
-    `html_url`
-    varchar(160) NOT NULL,
-    `followers_url`
-    varchar(160) NOT NULL,
-    `following_url`
-    varchar(160) NOT NULL,
-    `gists_url`
-    varchar(160) NOT NULL,
-    `starred_url`
-    varchar(160) NOT NULL,
-    `subscriptions_url`
-    varchar(160) NOT NULL,
-    `organizations_url`
-    varchar(160) NOT NULL,
-    `repos_url`
-    varchar(160) NOT NULL,
-    `events_url`
-    varchar(160) NOT NULL,
-    `received_events_url`
-    varchar(160) NOT NULL,
-    `type`
-    varchar(160) NOT NULL,
-    `site_admin`
-    tinyint(4) NOT NULL
-  ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-
-
---
--- Indices de la tabla `cliente`
-  
-
-
-ALTER TABLE `cliente`
-ADD PRIMARY KEY
-  (`id`);
-
-ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+SET time_zone  = "+00:00";
   
 
   INSERT INTO `cliente` (

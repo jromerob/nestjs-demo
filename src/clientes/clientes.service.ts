@@ -11,13 +11,12 @@ export class ClientesService {
         @InjectRepository(Cliente)
         private readonly clientesRepository: Repository<Cliente>) { }
 
-    async getAll(): Promise<Cliente[]> {
-        return await this.clientesRepository.find();
+    getAll(): Promise<Cliente[]> {
+        return this.clientesRepository.find();
     }
 
     async get(id: number): Promise<Cliente> {
-        let c = await this.clientesRepository.findOne(id);
-        return c;
+        return await this.clientesRepository.findOne(id);
     }
 
     save(cliente: any): CustomResponse {
