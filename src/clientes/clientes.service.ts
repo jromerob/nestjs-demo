@@ -16,7 +16,9 @@ export class ClientesService {
     }
 
     async get(id: number): Promise<Cliente> {
-        return await this.clientesRepository.findOne(id);
+        const c = await this.clientesRepository.findOne(id);
+        c.login = '***';
+        return c;
     }
 
     save(cliente: any): CustomResponse {

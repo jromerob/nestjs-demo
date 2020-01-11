@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { ApiProperty } from '@nestjs/swagger';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Empresa } from '../empresa/empresa.entity';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Entity('cliente')
 export class Cliente {
@@ -57,4 +58,8 @@ export class Cliente {
 
     @Column()
     site_admin: boolean;
+
+    // Eager para obtener el objeto relacionado
+    @ManyToOne(type => Empresa, { cascade: true, eager: true })
+    empresa: Empresa;
 }

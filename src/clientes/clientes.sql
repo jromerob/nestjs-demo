@@ -7,6 +7,7 @@ SET time_zone  = "+00:00";
 
   INSERT INTO `cliente` (
     `login`,
+     `empresaID`,
     `node_id`,
     `avatar_url`,
     `gravatar_id`,
@@ -26,6 +27,7 @@ SET time_zone  = "+00:00";
 ) VALUES
   ( 
     'mojombo', 
+    2,
     1, 
     'MDQ6VXNlcjE=', 
     'https://avatars0.githubusercontent.com/u/1?v=4',
@@ -44,6 +46,7 @@ SET time_zone  = "+00:00";
     false
   ),(
     'mojombo2', 
+    2,
     2, 
     'MDQ6VXNlcjE=', 
     'https://avatars0.githubusercontent.com/u/1?v=4',
