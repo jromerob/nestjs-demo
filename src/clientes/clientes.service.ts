@@ -17,7 +17,7 @@ export class ClientesService {
 
     async get(id: number): Promise<Cliente> {
         const c = await this.clientesRepository.findOne(id);
-        c.login = '***';
+        c.login = '*** Ocultado por el servicio ***';
         return c;
     }
 
