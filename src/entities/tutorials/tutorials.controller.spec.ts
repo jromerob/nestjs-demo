@@ -1,9 +1,9 @@
 import { Test } from '@nestjs/testing';
 
 import { TutorialsController } from './tutorials.controller';
-import { TUTORIALS_DATA } from './tutorials.data';
 import { TutorialsService } from './tutorials.service';
-import { TutorialsServiceFake } from './tutorials.service.fake';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Tutorial } from './tutorial.entity';
 
 describe('TutorialsController', () => {
     let tutorialsController: TutorialsController;
@@ -11,20 +11,18 @@ describe('TutorialsController', () => {
 
     beforeEach(async () => {
         const module = await Test.createTestingModule({
+            imports: [TypeOrmModule.forRoot({ keepConnectionAlive: true }), TypeOrmModule.forFeature([Tutorial])],
+            providers: [TutorialsService],
             controllers: [TutorialsController],
-            components: [
-                {provide: TutorialsService, useClass: TutorialsServiceFake}
-            ],
         }).compile();
 
         tutorialsService = module.get<TutorialsService>(TutorialsService);
         tutorialsController = module.get<TutorialsController>(TutorialsController);
     });
 
-    describe('findAll', () => {
-        it('should return an array of users', async () => {
-            const result = TUTORIALS_DATA;
-            expect(await tutorialsController.findAll()).toBe(result);
+    describe('buscar todos', () => {
+        it('Debería retornar un array de tutoriales', async () => {
+            expect(await tutorialsController.findAll()).not.toBeUndefined();
         });
     });
 });
