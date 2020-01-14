@@ -1,26 +1,26 @@
 import { Controller, Get, Post, Body, Header, Param, Res, NotFoundException, HttpException } from '@nestjs/common';
-import { EmpresasService } from './empresa.service';
-import { Empresa } from './empresa.entity';
-import { CustomResponse } from '../dtos/custom-response';
+import { EmpresaDireccion } from './empresa_direccion.entity';
 import { ApiTags, ApiCreatedResponse, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { Http2ServerResponse } from 'http2';
+import { EmpresaDireccionesService } from './empresa_direcciones.service';
+import { CustomResponse } from '../../dtos/custom-response';
 
-@Controller('empresas')
-@ApiTags('empresas')
-export class EmpresasController {
+@Controller('empresas_direcciones')
+@ApiTags('empresas_direcciones')
+export class EmpresasDireccionesController {
 
-    constructor(private readonly empresaService: EmpresasService) {
+    constructor(private readonly empresaDireccionesService: EmpresaDireccionesService) {
 
     }
 
     @Get()
     @ApiCreatedResponse({
-        description: 'Listado de empresa',
-        type: Empresa,
+        description: 'Listado de direcciones de empresas',
+        type: EmpresaDireccion,
         isArray: true,
     })
-    getAll(): Promise<Empresa[]> {
-        return this.empresaService.getAll();
+    getAll(): Promise<EmpresaDireccion[]> {
+        return this.empresaDireccionesService.getAll();
 
     }
     /**
@@ -29,11 +29,11 @@ export class EmpresasController {
      * @param {number} id
      * @param {any} res
      *
-     * @memberOf EmpresasController
+     * @memberOf EmpresasDireccionesController
      */
     // @Get(':id')
     // async  findOne(@Param('id') id: number, @Res() res) {
-    //     const out = await this.empresaService.get(id);
+    //     const out = await this.clientesService.get(id);
     //     if (out) {
     //         res.send(out);
     //     } else {
@@ -48,13 +48,13 @@ export class EmpresasController {
      * @param {number} id
      * @param {any} res
      *
-     * @memberOf EmpresasController
+     * @memberOf EmpresasDireccionesController
      */
     // @Get(':id')
     // @ApiResponse({ status: 200, description: 'OK' })
     // @ApiResponse({ status: 204, description: 'Sin contenido' })
     // async  findOne(@Param('id') id: number, @Res() res) {
-    //     const out = await this.empresaService.get(id);
+    //     const out = await this.clientesService.get(id);
     //     if (out) {
     //         res.send(out);
     //     } else {
@@ -70,17 +70,17 @@ export class EmpresasController {
      * @param {number} id
      * @param {any} res
      *
-     * @memberOf EmpresasController
+     * @memberOf EmpresasDireccionesController
      */
     // @Get(':id')
     // @ApiResponse({ status: 200, description: 'OK' })
     // @ApiResponse({ status: 204, description: 'Sin contenido' })
     // async  findOne(@Param('id') id: number, @Res() res) {
-    //     const out = await this.empresaService.get(id);
+    //     const out = await this.clientesService.get(id);
     //     if (out) {
     //         res.send(out);
     //     } else {
-    //         throw new HttpException('Empresa no encontrado', 204);
+    //         throw new HttpException('EmpresaDireccion no encontrado', 204);
     //     }
     // }
 
@@ -90,14 +90,14 @@ export class EmpresasController {
      * @param {number} id
      * @param {any} res
      *
-     * @memberOf EmpresasController
+     * @memberOf EmpresasDireccionesController
      */
     @Get(':id')
     @ApiResponse({ status: 200, description: 'OK' })
-    @ApiResponse({ status: 204, description: 'Empresa no encontrado' })
-    @ApiCreatedResponse({ description: 'Detalle de cliente', type: Empresa, isArray: false })
+    @ApiResponse({ status: 204, description: 'EmpresaDireccion no encontrado' })
+    @ApiCreatedResponse({ description: 'Detalle de empresaDireccion', type: EmpresaDireccion, isArray: false })
     async findOne(@Param('id') id: number, @Res() res) {
-        const out = await this.empresaService.get(id);
+        const out = await this.empresaDireccionesService.get(id);
         if (out) {
             res.send(out);
         } else {
@@ -110,8 +110,8 @@ export class EmpresasController {
 
     @Post()
     @Header('Cache-Control', 'none')
-    public saveCliente(@Body() cliente: Empresa): CustomResponse {
-        return this.empresaService.save(cliente);
+    public saveCliente(@Body() empresaDireccion: EmpresaDireccion): CustomResponse {
+        return this.empresaDireccionesService.save(empresaDireccion);
 
     }
 }
