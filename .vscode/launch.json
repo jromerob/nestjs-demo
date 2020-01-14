@@ -8,6 +8,11 @@
         "request": "attach",
         "name": "Debug API",
         "sourceMaps": true,
-        "port": 9229
+        "port": 9229,
+        //  "preLaunchTask": "debug",
+        "stopOnEntry": false,
+        "cwd": "${workspaceRoot}",
+        "protocol": "inspector",
+        "restart": true
     }]
 }

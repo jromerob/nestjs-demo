@@ -12,7 +12,7 @@ export class Empresa {
     name: string;
 
     // @ManyToOne(type => EmpresaDireccion, { cascade: true, eager: true }  )
-    @OneToMany(type => EmpresaDireccion, empresaDireccion => empresaDireccion.empresa, { eager: true, })
+    @OneToMany(type => EmpresaDireccion, empresaDireccion => empresaDireccion.empresa, { eager: true })
     direcciones: EmpresaDireccion[];
 
 }
