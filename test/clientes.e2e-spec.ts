@@ -1,9 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
-import { ClientesService } from 'src/entities/clientes/clientes.service';
+import { AppModule } from '../src/app.module';
 
-describe('AppController (e2e)', () => {
+describe('Clientes (e2e)', () => {
   let app;
 
 
@@ -16,11 +15,11 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+
   test('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+    return request(app.getHttpServer()).get('/clientes')
+      .expect(200);
   });
+
 
 });
