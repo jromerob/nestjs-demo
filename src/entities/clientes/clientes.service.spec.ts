@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ClientesService } from './clientes.service';
 import { EmpresasService } from '../empresa/empresa.service';
-import { DefaultAdminModule } from 'nestjs-admin';
 import { Cliente } from './cliente.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 

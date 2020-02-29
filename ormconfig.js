@@ -1,5 +1,3 @@
-const adminuser = require('nestjs-admin').AdminUserEntity
-
 module.exports = {
     "type": "mysql",
     "host": "localhost",
@@ -8,7 +6,7 @@ module.exports = {
     "password": "",
     "database": "test",
     "entities": [
-        "dist/**/**.entity{.ts,.js}", adminuser
+        "dist/**/**.entity{.ts,.js}"
     ],
-    "synchronize": true
+    "synchronize": false
 }
